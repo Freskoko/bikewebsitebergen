@@ -8,4 +8,4 @@ def hello_world():
     return "<p> Hello, \n fWorld!</p>"
 
 if __name__ == "__main__":
-    app.run(debug=True, port=os.getenv("PORT", 5000))
+    app.run(debug=True, port=os.getenv("PORT"))
