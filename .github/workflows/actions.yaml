@@ -1,0 +1,17 @@
+name: black check
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Black Code Formatter
+      uses: lgeiger/black-action@v1.0.1
