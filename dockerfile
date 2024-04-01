@@ -28,4 +28,5 @@ ENV FLASK_RUN_HOST=0.0.0.0
 
 CMD ["flask","run"]
 
-# docker run -d -p 5000:5000 --name myflaskapp apitest4
+# docker build . -t apitest
+# docker run -d -p 5000:5000 --name apitestrun apitest

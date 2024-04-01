@@ -7,8 +7,8 @@ def create_map_fig(
 ):
     fig = go.Figure()
 
-    all_stations_df = pd.read_csv("data/out/stations_df.csv")
-    final_df = pd.read_csv("data/out/stations_trips_df.csv")
+    all_stations_df = pd.read_csv("src/data/out/stations_df.csv")
+    final_df = pd.read_csv("src/data/out/stations_trips_df.csv")
 
     # filter trips to other stations from the base station
     trips_from_base = final_df[final_df["start_station_name"] == base_station_name]
