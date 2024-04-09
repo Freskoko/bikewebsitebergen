@@ -2,7 +2,11 @@
 <html>
  <body>
   <h1>Bikes!</h1>
-  <div id='chart' class='chart'”></div>
+  <form action="/" method="POST">
+     Enter bike-stop <input type="text" name="location"><br>
+     <input type="submit" value="Submit"><br>
+  </form>
+  <div id='chart' class='chart'></div>
 </body>
 <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
 <script type='text/javascript'>

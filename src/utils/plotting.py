@@ -44,44 +44,28 @@ def create_map_fig(
                     ],
                 )
             )
-
-            # line text (todo fix)
+            
+            # markers at stations
             fig.add_trace(
                 go.Scattermapbox(
                     mode="markers",
-                    lon=[
-                        (
-                            all_stations_df[
-                                all_stations_df["station_name"] == base_station_name
-                            ]["station_longitude"].values[0]
-                            + all_stations_df.iloc[i]["station_longitude"]
-                        )
-                        / 2
-                    ],
-                    lat=[
-                        (
-                            all_stations_df[
-                                all_stations_df["station_name"] == base_station_name
-                            ]["station_latitude"].values[0]
-                            + all_stations_df.iloc[i]["station_latitude"]
-                        )
-                        / 2
-                    ],
+                    lon=[all_stations_df.iloc[i]["station_longitude"]],
+                    lat=[all_stations_df.iloc[i]["station_latitude"]],
                     showlegend=False,
-                    marker=go.scattermapbox.Marker(size=0),
-                    hovertemplate=f"Trips from {base_station_name} to {target_station_name}: {num_trips}",
+                    marker=go.scattermapbox.Marker(size=8),
+                    hovertemplate=f"{target_station_name}  trips here: {num_trips}",
                 )
             )
 
+    # base station 
     fig.add_trace(
         go.Scattermapbox(
             mode="markers",
-            lon=all_stations_df["station_longitude"],
-            lat=all_stations_df["station_latitude"],
-            marker=go.scattermapbox.Marker(size=8),
-            text=all_stations_df["station_name"],
-            hoverinfo="text",
+            lon=[all_stations_df[all_stations_df["station_name"] == base_station_name]["station_longitude"].values[0]],
+            lat=[all_stations_df[all_stations_df["station_name"] == base_station_name]["station_latitude"].values[0]],
             showlegend=False,
+            marker=go.scattermapbox.Marker(size=10, color='red'),
+            hovertemplate=f"{base_station_name}",
         )
     )
 
