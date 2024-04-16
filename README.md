@@ -1,7 +1,7 @@
 # todo
 
-fix line not perfect
+maybe move to dash to take inputs from user from clicked thing
 
-fix it so that website looks col and pass name of station too
+maybe change size of circles to match how many cycles go there
 
-fix docker to match website
+move from csv to database
