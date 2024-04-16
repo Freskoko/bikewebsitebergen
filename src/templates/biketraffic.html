@@ -1,16 +1,38 @@
 <!doctype html>
 <html>
- <body>
-  <h1>Bikes!</h1>
-  <form action="/" method="POST">
-     Enter bike-stop <input type="text" name="location"><br>
-     <input type="submit" value="Submit"><br>
-  </form>
-  <div id='chart' class='chart'></div>
-</body>
+<head>
+<style>
+.chart-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.chart {
+    flex: 1 1 auto;
+    min-width: 300px;
+}
+</style>
+</head>
+<body>
+<h1>Bikes! Current stop = {{ location }}</h1>
+<form action="/" method="POST">
+    Enter bike-stop <input type="text" name="location"><br>
+    <input type="submit" value="Submit"><br>
+</form>
+
+<div class='chart-container'>
+    <div id='chart1' class='chart'></div>
+    <div id='chart2' class='chart'></div>
+</div>
+
 <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
 <script type='text/javascript'>
-  var graphs = {{graphJSON | safe}};
-  Plotly.plot('chart',graphs,{});
+    var graph1 = {{graph1JSON | safe}};
+    Plotly.plot('chart1',graph1,{});
+
+    var graph2 = {{graph2JSON | safe}};
+    Plotly.plot('chart2',graph2,{});
 </script>
+</body>
 </html>
