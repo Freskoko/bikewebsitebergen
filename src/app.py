@@ -9,8 +9,6 @@ from utils.plotting import create_map_fig, create_station_graph
 app = Flask(__name__)
 
 
-
-
 @app.route("/", methods=["GET", "POST"])
 def biketraffic():
     location = "Gågaten"

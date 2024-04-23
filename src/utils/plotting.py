@@ -65,7 +65,7 @@ def create_map_fig(
                     lon=[all_stations_df.iloc[i]["station_longitude"]],
                     lat=[all_stations_df.iloc[i]["station_latitude"]],
                     showlegend=False,
-                    marker=go.scattermapbox.Marker(size=8,color="blue"),
+                    marker=go.scattermapbox.Marker(size=8, color="blue"),
                     hovertemplate=f"{target_station_name}  trips here: {num_trips}",
                 )
             )
@@ -117,7 +117,6 @@ def create_station_graph(
     size_width=BASE_WIDTH,
     size_height=BASE_HEIGHT,
 ):
-
     fig = go.Figure()
 
     final_df = pd.read_csv("src/data/out/stations_trips_df.csv")
