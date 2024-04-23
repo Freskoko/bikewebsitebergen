@@ -32,24 +32,31 @@ def create_map_fig(
                 else 0
             )
 
-            fig.add_trace(
-                go.Scattermapbox(
-                    mode="lines",
-                    showlegend=False,
-                    lon=[
-                        all_stations_df[
-                            all_stations_df["station_name"] == base_station_name
-                        ]["station_longitude"].values[0],
-                        all_stations_df.iloc[i]["station_longitude"],
-                    ],
-                    lat=[
-                        all_stations_df[
-                            all_stations_df["station_name"] == base_station_name
-                        ]["station_latitude"].values[0],
-                        all_stations_df.iloc[i]["station_latitude"],
-                    ],
-                )
-            )
+            # lines between stops
+            # fig.add_trace(
+            #     go.Scattermapbox(
+            #         mode="lines",
+            #         showlegend=False,
+            #         opacity=0.2,
+            #         lon=[
+            #             all_stations_df[
+            #                 all_stations_df["station_name"] == base_station_name
+            #             ]["station_longitude"].values[0],
+            #             all_stations_df.iloc[i]["station_longitude"],
+            #         ],
+            #         lat=[
+            #             all_stations_df[
+            #                 all_stations_df["station_name"] == base_station_name
+            #             ]["station_latitude"].values[0],
+            #             all_stations_df.iloc[i]["station_latitude"],
+            #         ],
+            #         line=dict(
+            #             # opacity=0.35,
+            #             width=1,
+            #             color="green"
+            #         )
+            #     )
+            # )
 
             # markers at stations
             fig.add_trace(
@@ -58,7 +65,7 @@ def create_map_fig(
                     lon=[all_stations_df.iloc[i]["station_longitude"]],
                     lat=[all_stations_df.iloc[i]["station_latitude"]],
                     showlegend=False,
-                    marker=go.scattermapbox.Marker(size=8),
+                    marker=go.scattermapbox.Marker(size=8,color="blue"),
                     hovertemplate=f"{target_station_name}  trips here: {num_trips}",
                 )
             )
@@ -113,8 +120,6 @@ def create_station_graph(
 
     fig = go.Figure()
 
-    # all_stations_df = pd.read_csv("data/out/stations_df.csv")
-    # final_df = pd.read_csv("src/data/out/stations_trips_df.csv")
     final_df = pd.read_csv("src/data/out/stations_trips_df.csv")
 
     station_df = final_df.loc[final_df["start_station_name"] == base_station_name]
