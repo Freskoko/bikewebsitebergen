@@ -1,4 +1,23 @@
 [[package]]
+name = "anyio"
+version = "4.9.0"
+description = "High level compatibility layer for multiple asynchronous event loop implementations"
+category = "main"
+optional = false
+python-versions = ">=3.9"
+
+[package.dependencies]
+exceptiongroup = {version = ">=1.0.2", markers = "python_version < \"3.11\""}
+idna = ">=2.8"
+sniffio = ">=1.1"
+typing_extensions = {version = ">=4.5", markers = "python_version < \"3.13\""}
+
+[package.extras]
+trio = ["trio (>=0.26.1)"]
+test = ["anyio", "blockbuster (>=1.5.23)", "coverage[toml] (>=7)", "exceptiongroup (>=1.2.0)", "hypothesis (>=4.0)", "psutil (>=5.9)", "pytest (>=7.0)", "trustme", "truststore (>=0.9.1)", "uvloop (>=0.21)"]
+doc = ["packaging", "Sphinx (>=8.2,<9.0)", "sphinx-rtd-theme", "sphinx-autodoc-typehints (>=1.2.0)"]
+
+[[package]]
 name = "appnope"
 version = "0.1.4"
 description = "Disable App Nap on macOS >= 10.9"
@@ -120,10 +139,18 @@ optional = false
 python-versions = ">=3.5"
 
 [[package]]
+name = "docutils"
+version = "0.21.2"
+description = "Docutils -- Python Documentation Utilities"
+category = "main"
+optional = false
+python-versions = ">=3.9"
+
+[[package]]
 name = "exceptiongroup"
 version = "1.2.0"
 description = "Backport of PEP 654 (exception groups)"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.7"
 
@@ -181,6 +208,25 @@ type1 = ["xattr"]
 ufo = ["fs (>=2.2.0,<3)"]
 unicode = ["unicodedata2 (>=15.1.0)"]
 woff = ["zopfli (>=0.1.4)", "brotlicffi (>=0.8.0)", "brotli (>=1.0.1)"]
+
+[[package]]
+name = "h11"
+version = "0.16.0"
+description = "A pure-Python, bring-your-own-I/O implementation of HTTP/1.1"
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[[package]]
+name = "idna"
+version = "3.10"
+description = "Internationalized Domain Names in Applications (IDNA)"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.extras]
+all = ["ruff (>=0.6.2)", "mypy (>=1.11.2)", "pytest (>=8.3.2)", "flake8 (>=7.1.1)"]
 
 [[package]]
 name = "ipykernel"
@@ -259,7 +305,7 @@ python-versions = ">=3.7"
 name = "jedi"
 version = "0.19.1"
 description = "An autocompletion tool for Python that can be used for text editors."
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.6"
 
@@ -330,6 +376,60 @@ optional = false
 python-versions = ">=3.7"
 
 [[package]]
+name = "loro"
+version = "1.5.1"
+description = "Python bindings for [Loro](https://loro.dev)"
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[[package]]
+name = "marimo"
+version = "0.13.14"
+description = "A library for making reactive notebooks and apps"
+category = "main"
+optional = false
+python-versions = ">=3.9"
+
+[package.dependencies]
+click = ">=8.0,<9"
+docutils = ">=0.16.0"
+itsdangerous = ">=2.0.0"
+jedi = ">=0.18.0"
+loro = {version = ">=1.5.0", markers = "python_version >= \"3.11\""}
+markdown = ">=3.4,<4"
+narwhals = ">=1.12.0"
+packaging = "*"
+psutil = ">=5.0"
+pygments = ">=2.13,<3"
+pymdown-extensions = ">=10.11.2,<11"
+pyyaml = ">=6.0"
+starlette = ">=0.26.1,<0.36.0 || >0.36.0"
+tomlkit = ">=0.12.0"
+typing-extensions = {version = ">=4.4.0", markers = "python_version < \"3.11\""}
+uvicorn = ">=0.22.0"
+websockets = ">=10.0.0"
+
+[package.extras]
+dev = ["black (>=23.12.1,<23.13.0)", "click (>=8.0,<9)", "duckdb (>=1.0.0)", "openai (>=1.55.3)", "opentelemetry-api (>=1.26.0,<1.27.0)", "opentelemetry-sdk (>=1.26.0,<1.27.0)", "ruff (>=0.9.1,<0.10.0)", "sqlglot (>=23.4)"]
+docs = ["cairosvg (>=2.7.1)", "mdx-include (>=1.4.2)", "mike (>=2.0.0)", "mkdocs-autorefs (>=1.2.0)", "mkdocs-click (>=0.8.1)", "mkdocs-git-revision-date-localized-plugin (>=1.3.0)", "mkdocs-glightbox (>=0.4.0)", "mkdocs-macros-plugin (>=1.3.7)", "mkdocs-material-extensions (>=1.3.1)", "mkdocs-material (>=9.5.49)", "mkdocs-minify-plugin (>=0.8.0)", "mkdocs-redirects (>=1.2.2)", "mkdocs (>=1.6.1)", "mkdocstrings[python] (>=0.27.0)", "pillow (>=10.2.0)", "pymdown-extensions (>=10.7)"]
+lsp = ["python-lsp-ruff (>=2.0.0)", "python-lsp-server (>=1.10.0)"]
+recommended = ["altair (>=5.4.0)", "duckdb (>=1.0.0)", "nbformat (>=5.7.0)", "openai (>=1.55.3)", "polars[pyarrow] (>=1.9.0)", "ruff", "sqlglot (>=23.4)"]
+sql = ["duckdb (>=1.0.0)", "polars[pyarrow] (>=1.9.0)", "sqlglot (>=23.4)"]
+
+[[package]]
+name = "markdown"
+version = "3.8"
+description = "Python implementation of John Gruber's Markdown."
+category = "main"
+optional = false
+python-versions = ">=3.9"
+
+[package.extras]
+testing = ["coverage", "pyyaml"]
+docs = ["mkdocs (>=1.6)", "mkdocs-nature (>=0.6)", "mdx_gh_links (>=0.2)", "mkdocstrings", "mkdocs-gen-files", "mkdocs-section-index", "mkdocs-literate-nav"]
+
+[[package]]
 name = "markupsafe"
 version = "2.1.5"
 description = "Safely add untrusted strings to HTML/XML markup."
@@ -366,6 +466,27 @@ python-versions = ">=3.5"
 
 [package.dependencies]
 traitlets = "*"
+
+[[package]]
+name = "narwhals"
+version = "1.41.0"
+description = "Extremely lightweight compatibility layer between dataframe libraries"
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[package.extras]
+cudf = ["cudf (>=24.10.0)"]
+dask = ["dask[dataframe] (>=2024.8)"]
+duckdb = ["duckdb (>=1.0)"]
+ibis = ["ibis-framework (>=6.0.0)", "packaging", "pyarrow-hotfix", "rich"]
+modin = ["modin"]
+pandas = ["pandas (>=0.25.3)"]
+polars = ["polars (>=0.20.3)"]
+pyarrow = ["pyarrow (>=11.0.0)"]
+pyspark = ["pyspark (>=3.5.0)"]
+pyspark-connect = ["pyspark[connect] (>=3.5.0)"]
+sqlframe = ["sqlframe (>=3.22.0)"]
 
 [[package]]
 name = "nest-asyncio"
@@ -438,7 +559,7 @@ all = ["adbc-driver-postgresql (>=0.8.0)", "adbc-driver-sqlite (>=0.8.0)", "beau
 name = "parso"
 version = "0.8.3"
 description = "A Python Parser"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.6"
 
@@ -512,7 +633,7 @@ wcwidth = "*"
 name = "psutil"
 version = "5.9.8"
 description = "Cross-platform lib for process and system monitoring in Python."
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*"
 
@@ -539,6 +660,17 @@ python-versions = "*"
 tests = ["pytest"]
 
 [[package]]
+name = "pyarrow"
+version = "20.0.0"
+description = "Python library for Apache Arrow"
+category = "main"
+optional = false
+python-versions = ">=3.9"
+
+[package.extras]
+test = ["pytest", "hypothesis", "cffi", "pytz", "pandas"]
+
+[[package]]
 name = "pycparser"
 version = "2.22"
 description = "C parser in Python"
@@ -550,13 +682,28 @@ python-versions = ">=3.8"
 name = "pygments"
 version = "2.17.2"
 description = "Pygments is a syntax highlighting package written in Python."
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.7"
 
 [package.extras]
 plugins = ["importlib-metadata"]
 windows-terminal = ["colorama (>=0.4.6)"]
+
+[[package]]
+name = "pymdown-extensions"
+version = "10.15"
+description = "Extension pack for Python Markdown."
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[package.dependencies]
+markdown = ">=3.6"
+pyyaml = "*"
+
+[package.extras]
+extra = ["pygments (>=2.19.1)"]
 
 [[package]]
 name = "pyparsing"
@@ -597,6 +744,14 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "pyyaml"
+version = "6.0.2"
+description = "YAML parser and emitter for Python"
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[[package]]
 name = "pyzmq"
 version = "25.1.2"
 description = "Python bindings for 0MQ"
@@ -616,6 +771,14 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
 
 [[package]]
+name = "sniffio"
+version = "1.3.1"
+description = "Sniff out which async library your code is running under"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
 name = "stack-data"
 version = "0.6.3"
 description = "Extract data from python stack frames and tracebacks for informative displays"
@@ -632,6 +795,20 @@ pure-eval = "*"
 tests = ["pytest", "typeguard", "pygments", "littleutils", "cython"]
 
 [[package]]
+name = "starlette"
+version = "0.46.2"
+description = "The little ASGI library that shines."
+category = "main"
+optional = false
+python-versions = ">=3.9"
+
+[package.dependencies]
+anyio = ">=3.6.2,<5"
+
+[package.extras]
+full = ["httpx (>=0.27.0,<0.29.0)", "itsdangerous", "jinja2", "python-multipart (>=0.0.18)", "pyyaml"]
+
+[[package]]
 name = "tenacity"
 version = "8.2.3"
 description = "Retry code until it succeeds"
@@ -641,6 +818,14 @@ python-versions = ">=3.7"
 
 [package.extras]
 doc = ["reno", "sphinx", "tornado (>=4.5)"]
+
+[[package]]
+name = "tomlkit"
+version = "0.13.2"
+description = "Style preserving TOML library"
+category = "main"
+optional = false
+python-versions = ">=3.8"
 
 [[package]]
 name = "tornado"
@@ -666,7 +851,7 @@ test = ["argcomplete (>=3.0.3)", "mypy (>=1.7.0)", "pre-commit", "pytest-mock", 
 name = "typing-extensions"
 version = "4.10.0"
 description = "Backported and Experimental Type Hints for Python 3.8+"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.8"
 
@@ -679,12 +864,36 @@ optional = false
 python-versions = ">=2"
 
 [[package]]
+name = "uvicorn"
+version = "0.34.2"
+description = "The lightning-fast ASGI server."
+category = "main"
+optional = false
+python-versions = ">=3.9"
+
+[package.dependencies]
+click = ">=7.0"
+h11 = ">=0.8"
+typing-extensions = {version = ">=4.0", markers = "python_version < \"3.11\""}
+
+[package.extras]
+standard = ["colorama (>=0.4)", "httptools (>=0.6.3)", "python-dotenv (>=0.13)", "pyyaml (>=5.1)", "uvloop (>=0.14.0,!=0.15.0,!=0.15.1)", "watchfiles (>=0.13)", "websockets (>=10.4)"]
+
+[[package]]
 name = "wcwidth"
 version = "0.2.13"
 description = "Measures the displayed width of unicode strings in a terminal"
 category = "dev"
 optional = false
 python-versions = "*"
+
+[[package]]
+name = "websockets"
+version = "15.0.1"
+description = "An implementation of the WebSocket Protocol (RFC 6455 & 7692)"
+category = "main"
+optional = false
+python-versions = ">=3.9"
 
 [[package]]
 name = "werkzeug"
@@ -703,9 +912,10 @@ watchdog = ["watchdog (>=2.3)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "d8f412c5f4823687f1d34fd854c62bd343a33dfa62f1af9b873c6cb8e7f57827"
+content-hash = "cfc9f0f04771044b24ae0e0cea2ccefdbeda98f3ac9c5a9f9b7e290222a6f826"
 
 [metadata.files]
+anyio = []
 appnope = []
 asttokens = []
 blinker = []
@@ -717,10 +927,13 @@ contourpy = []
 cycler = []
 debugpy = []
 decorator = []
+docutils = []
 exceptiongroup = []
 executing = []
 flask = []
 fonttools = []
+h11 = []
+idna = []
 ipykernel = []
 ipython = []
 itsdangerous = []
@@ -729,9 +942,13 @@ jinja2 = []
 jupyter-client = []
 jupyter-core = []
 kiwisolver = []
+loro = []
+marimo = []
+markdown = []
 markupsafe = []
 matplotlib = []
 matplotlib-inline = []
+narwhals = []
 nest-asyncio = []
 numpy = []
 packaging = []
@@ -745,19 +962,27 @@ prompt-toolkit = []
 psutil = []
 ptyprocess = []
 pure-eval = []
+pyarrow = []
 pycparser = []
 pygments = []
+pymdown-extensions = []
 pyparsing = []
 python-dateutil = []
 pytz = []
 pywin32 = []
+pyyaml = []
 pyzmq = []
 six = []
+sniffio = []
 stack-data = []
+starlette = []
 tenacity = []
+tomlkit = []
 tornado = []
 traitlets = []
 typing-extensions = []
 tzdata = []
+uvicorn = []
 wcwidth = []
+websockets = []
 werkzeug = []

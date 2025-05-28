@@ -10,6 +10,8 @@ Flask = "^3.0.2"
 plotly = "^5.20.0"
 pandas = "^2.2.1"
 matplotlib = "^3.8.3"
+marimo = "^0.13.14"
+pyarrow = "^20.0.0"
 
 [tool.poetry.dev-dependencies]
 ipykernel = "^6.29.4"
