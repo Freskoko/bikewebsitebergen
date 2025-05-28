@@ -9,7 +9,15 @@ def _():
     import marimo as mo
     import pandas as pd
     import matplotlib.pyplot as plt
-    return mo, pd, plt
+    import seaborn as sns
+    from sklearn.model_selection import train_test_split
+    return mo, pd, plt, sns, train_test_split
+
+
+@app.cell
+def _():
+    RANDOM_STATE = 42
+    return (RANDOM_STATE,)
 
 
 @app.cell
@@ -34,8 +42,15 @@ def _(pd):
 
 
 @app.cell
-def _(df):
-    sub_df = df[["duration", "start_station_id", "start_station_name"]]
+def _(RANDOM_STATE, df, train_test_split):
+    train, val_test = train_test_split(df, train_size = 70, random_state = RANDOM_STATE)
+    validation, test = train_test_split(val_test, train_size = 50, random_state = RANDOM_STATE)
+    return (train,)
+
+
+@app.cell
+def _(train):
+    sub_df = train[["duration", "start_station_id", "start_station_name"]]
     return (sub_df,)
 
 
@@ -60,8 +75,8 @@ def _(longest, mo):
 @app.cell
 def _(sub_df):
 
-    ids = [807,816,640,132,817]
-    # ids = sub_df["start_station_id"]
+    #ids = [807,816,640,132,817]
+    ids = sub_df["start_station_id"]
     sub_df_smaller = sub_df[sub_df["start_station_id"].isin(ids)]
     return (sub_df_smaller,)
 
@@ -75,7 +90,7 @@ def _(mo, sub_df_smaller):
 @app.cell
 def _(pd, sub_df_smaller):
     sub_df_cleaned = sub_df_smaller.copy()
-    sub_df_cleaned["duration"] = pd.to_numeric(sub_df_cleaned["duration"]) / (1)
+    sub_df_cleaned["duration"] = pd.to_numeric(sub_df_cleaned["duration"])/60
     return (sub_df_cleaned,)
 
 
@@ -86,16 +101,13 @@ def _(mo, sub_df_cleaned):
 
 
 @app.cell
-def _(plt, sub_df_cleaned):
-    grouped = sub_df_cleaned.groupby("start_station_id")["duration"].apply(list)
-
+def _(plt, sns, sub_df_cleaned):
     plt.figure(figsize=(12, 6))
-    plt.boxplot(grouped.values, labels=grouped.index, showfliers=False)
+    sns.boxplot(data=sub_df_cleaned, x="start_station_name", y="duration", showfliers=False)
 
     plt.xlabel("Start Station ID")
     plt.ylabel("Duration (minutes)")
     plt.title("Boxplot of Duration by Start Station ID")
-
     plt.tight_layout()
     plt.show()
     return
